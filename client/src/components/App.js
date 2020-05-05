@@ -1,6 +1,9 @@
 import React from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
 import Header from './Header';
+import {connect} from 'react-redux'
+import * as actions from '../actions/index'
+import Landing from './Landing';
 
 
 // class App extends React.Component{
@@ -16,10 +19,13 @@ import Header from './Header';
 
 
 const Dashboard=()=><h2>Dashboard</h2>;
-const Survey=()=><h2>Survey</h2>;
-const Landing=()=><h2>Landing</h2>;
 
-const App =()=>{
+
+class App extends React.Component {
+    componentDidMount(){
+        this.props.fetchUser()
+    }
+    render(){
     return(
         <div className="container">
             <BrowserRouter>
@@ -31,7 +37,8 @@ const App =()=>{
             </BrowserRouter>
             
         </div>
-    )
+    );
+}
 }
 
-export default App;
+export default connect(null,actions)(App);
