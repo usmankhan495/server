@@ -4,35 +4,24 @@ import Header from './Header';
 import {connect} from 'react-redux'
 import * as actions from '../actions/index'
 import Landing from './Landing';
-
-
-// class App extends React.Component{
-
-//     render(){
-//         <div>
-//             <p>
-//                 app compoents
-//             </p>
-//         </div>
-//     }
-// }
-
-
-const Dashboard=()=><h2>Dashboard</h2>;
+import DashBoard from './Dashboard';
+import SurveyNew from './surveys/SurveyNew';
 
 
 class App extends React.Component {
     componentDidMount(){
         this.props.fetchUser()
     }
+    
     render(){
     return(
         <div className="container">
             <BrowserRouter>
-            <div>
+            <div className='container'>
                 <Header/>
                 <Route exact path="/" component={Landing} />
-                <Route path="/survey" component={Dashboard} />
+                <Route path="/surveys" component={DashBoard} />
+                <Route path='/survey/new' component={SurveyNew}/>
             </div>
             </BrowserRouter>
             
